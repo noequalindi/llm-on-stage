@@ -1,0 +1,38 @@
+.gradio-container { max-width: 1180px !important; margin: auto; }
+.cabecera { position: relative; background: #102442; color: #f6f8fc; padding: 36px 40px; border-radius: 18px; margin: 10px 0 28px; }
+.cabecera .marca { color: #c5d5ec; }
+.cabecera .marca, .cabecera .edicion { font-size: 11px; letter-spacing: .14em; font-weight: 700; }
+.cabecera .edicion { position: absolute; top: 36px; right: 40px; color: #b5cbed; }
+.cabecera h1 { color: #fff; font-size: clamp(28px, 4vw, 46px); letter-spacing: -.04em; line-height: 1.1; margin: 24px 0 12px; }
+.cabecera p { color: #c5d5ec; font-size: 15px; max-width: 660px; }
+.nota { font-size: 12px; line-height: 1.7; color: #71809a; }
+.afiche { position: relative; overflow: hidden; min-height: 540px; border-radius: 14px; isolation: isolate; }
+.afiche.mar { background: #142f52; --texto: #e4efff; --tinta: #78b9e1; }
+.afiche.sol { background: #f3d992; --texto: #34324c; --tinta: #ca6b35; }
+.afiche.noche { background: #1d1e3d; --texto: #ede9fb; --tinta: #9285d5; }
+.afiche-contenido { position: relative; z-index: 1; padding: 32px; }
+.afiche-fuente { font-size: 10px; font-weight: 700; letter-spacing: .11em; }
+.afiche-numero { font-size: 72px; line-height: 1; font-weight: 800; margin-top: 30px; opacity: .35; letter-spacing: -.08em; }
+.afiche h2 { color: inherit !important; font-size: clamp(28px, 3.8vw, 48px) !important; font-weight: 800; line-height: 1.08; letter-spacing: -.035em; margin: 24px 0 20px; overflow-wrap: anywhere; max-width: 95%; }
+.afiche-motivo { font-size: 14px; line-height: 1.6; max-width: 90%; overflow-wrap: anywhere; }
+.afiche-etiquetas { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 32px; }
+.afiche-etiquetas span { border: 1px solid currentColor; border-radius: 30px; padding: 5px 12px; font-size: 11px; }
+.afiche-pie { border-top: 1px solid currentColor; margin-top: 30px; padding-top: 16px; font-size: 8px; letter-spacing: .12em; opacity: .7; }
+.orbita { position: absolute; right: -130px; top: 120px; width: 340px; height: 340px; border: 36px solid var(--tinta); border-radius: 50%; opacity: .22; z-index: 0; animation: respirar 14s ease-in-out infinite alternate; }
+.afiche.medio .orbita { animation-duration: 8s; }
+.afiche.rapido .orbita { animation-duration: 4s; }
+.afiche.tension .orbita { border-radius: 12%; }
+.afiche.alegria .orbita { border-style: dashed; }
+@keyframes respirar { from { transform: rotate(-12deg) translateY(-18px); } to { transform: rotate(12deg) translateY(28px); } }
+@media (prefers-reduced-motion: reduce) { .orbita { animation: none; } }
+@media (max-width: 640px) { .cabecera { padding: 26px 22px; } .cabecera .edicion { position: static; margin-top: 10px; } .afiche-contenido { padding: 24px; } }
+
+.afiche, .afiche * { color: var(--texto) !important; }
+
+/* ESCENARIO: el canvas lo dibuja escenario.js; acá solo el marco. */
+.escena-panel { display: flex; flex-direction: column; gap: 10px; }
+.escena-barra { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 10px; font-weight: 700; letter-spacing: .11em; color: #71809a; }
+.rearmar { border: 1px solid currentColor; border-radius: 6px; padding: 6px 12px; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.escena { min-height: 200px; }
+.escena canvas { display: block; width: 100%; height: auto; border-radius: 16px; touch-action: none; cursor: crosshair; }
+.escena-ayuda { font-size: 12px; line-height: 1.6; color: #71809a; margin: 0; }

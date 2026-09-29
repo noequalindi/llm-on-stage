@@ -1,0 +1,8 @@
+{
+  "memoria": 4,
+  "num_ctx": 4096,
+  "_ayuda": {
+    "memoria": "Intercambios (pregunta + respuesta) que se reenvian al modelo en cada mensaje. 0 = sin memoria. Rango: 0 a 20.",
+    "num_ctx": "Ventana de contexto de Ollama, en tokens: cuanto texto entra en cada pedido (instrucciones + historial + mensaje). Mas grande = mas memoria RAM. Qwen2.5 1.5B admite hasta 32768. Rango: 512 a 32768."
+  }
+}

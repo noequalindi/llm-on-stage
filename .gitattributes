@@ -1,0 +1,5 @@
+# Preserve runnable scripts across Windows/macOS/Linux checkouts.
+*.command text eol=lf
+*.sh text eol=lf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf

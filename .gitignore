@@ -1,0 +1,25 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mve/
+models/
+outputs/
+.env
+build/
+dist/
+.tools/
+.DS_Store
+**/bin/data/runtime.json
+**/obj/
+**/bin/*.app/
+*.log
+**/bin/*.exe
+**/bin/*.dll
+**/bin/llmPoster
+.local/
+**/bin/llmStage
+
+# Material solo para docentes: no se sube al repo de alumnos
+docs/GUIA_DOCENTE.md

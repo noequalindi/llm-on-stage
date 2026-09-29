@@ -1,0 +1,16 @@
+{
+  "respuesta": "Estas palabras habitan un escenario de gravedad suave. Mantene el mouse presionado para atraerlas y explorar sus choques.",
+  "titulo": "Un escenario de palabras",
+  "paleta": "mar",
+  "gravedad": 2.5,
+  "rebote": 0.65,
+  "cantidad": 12,
+  "forma": "circulos",
+  "interaccion": "atraer",
+  "palabras": [
+    "mar",
+    "aire",
+    "eco",
+    "luz"
+  ]
+}
