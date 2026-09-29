@@ -1,4 +1,4 @@
-# 26 · LLM generativo local + openFrameworks
+# LLM generativo local + openFrameworks
 
 ### LLM Stage - Example in OF
 https://github.com/user-attachments/assets/52e9fc43-fe2a-4e8e-8aa3-cd1fcac6f82d
