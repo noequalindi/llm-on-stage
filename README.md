@@ -1,6 +1,6 @@
 # 26 · LLM generativo local + openFrameworks
 
-[Presentación de la clase (PDF)](26_LLM_local_Python_openFrameworks.pdf)
+[Presentación de la clase (PDF)](LLMs_local_python_openFrameworks.pdf)
 
 Escribimos un texto, **Qwen genera una respuesta** y OF la usa para crear una
 experiencia interactiva. El afiche es un punto de partida: los alumnos pueden
@@ -29,7 +29,7 @@ Docker ni se necesita API key.
 >
 > Para agregar paletas, escenarios o cambiar el contexto: [docs/GUIA_ALUMNOS_ESCENARIOS.md](docs/GUIA_ALUMNOS_ESCENARIOS.md).
 
-## Pasos, en orden
+### Guía de pasos a seguir
 
 1. **Instalar openFrameworks** 0.12.1 y su compilador.
 2. **Instalar Ollama y Qwen** con el instalador de esta carpeta.
@@ -55,7 +55,7 @@ Para comprobar la instalación, abrir `OF/examples/templates/emptyExample` con e
 Generator (o su IDE) y compilarlo una vez. Guía oficial por sistema:
 [openframeworks.cc/download](https://openframeworks.cc/download/) → «setup guides».
 
-## 2. Instalar Ollama y Qwen
+## 2. Instalar Ollama y Qwen (con el script que ya se les da armado)
 
 Guardar esta carpeta (el repo que clonaste) en su ubicación definitiva. Desde una terminal posicionada en esa carpeta:
 
