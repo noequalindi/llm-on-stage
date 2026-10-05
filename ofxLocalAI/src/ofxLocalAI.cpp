@@ -1,14 +1,14 @@
-#include "ofxLocalLLM.h"
+#include "ofxLocalAI.h"
 #include <curl/curl.h>
 #include <limits>
 #include <stdexcept>
 
-ofxLocalLLM::ofxLocalLLM() {
+ofxLocalAI::ofxLocalAI() {
     if (curl_global_init(CURL_GLOBAL_DEFAULT) != CURLE_OK)
         throw std::runtime_error("No se pudo iniciar HTTP");
 }
-ofxLocalLLM::~ofxLocalLLM() { close(); curl_global_cleanup(); }
-void ofxLocalLLM::setup(const std::string& url) {
+ofxLocalAI::~ofxLocalAI() { close(); curl_global_cleanup(); }
+void ofxLocalAI::setup(const std::string& url) {
     close();
     if (url.rfind("http://",0)!=0 && url.rfind("https://",0)!=0)
         throw std::invalid_argument("URL de Ollama invalida");
@@ -16,15 +16,15 @@ void ofxLocalLLM::setup(const std::string& url) {
     while (!baseUrl.empty() && baseUrl.back()=='/') baseUrl.pop_back();
     active=true;
 }
-bool ofxLocalLLM::chat(const ofJson& request) {
+bool ofxLocalAI::chat(const ofJson& request) {
     if (!request.is_object()) return false;
     auto body=request;
     body["stream"]=false; // This introductory client receives one complete reply.
     return start("/api/chat","chat",&body);
 }
-bool ofxLocalLLM::listModels() { return start("/api/tags","models",nullptr); }
+bool ofxLocalAI::listModels() { return start("/api/tags","models",nullptr); }
 
-bool ofxLocalLLM::start(const std::string& path,const std::string& kind,const ofJson* body) {
+bool ofxLocalAI::start(const std::string& path,const std::string& kind,const ofJson* body) {
     if (!active || inFlight) return false;
     const auto url=baseUrl+path, payload=body ? body->dump() : std::string{};
     inFlight=true; stopping=false;
@@ -94,7 +94,7 @@ bool ofxLocalLLM::start(const std::string& path,const std::string& kind,const of
     } catch (...) { inFlight=false; throw; }
     return true;
 }
-void ofxLocalLLM::update() {
+void ofxLocalAI::update() {
     ofJson event; std::string problem;
     {
         std::lock_guard<std::mutex> lock(mutex);
@@ -106,7 +106,7 @@ void ofxLocalLLM::update() {
     if (!problem.empty()) ofNotifyEvent(error,problem,this);
     else ofNotifyEvent(response,event,this);
 }
-void ofxLocalLLM::close() {
+void ofxLocalAI::close() {
     stopping=true;
     if (worker.joinable()) worker.join(); // curl progress callback interrupts transfer.
     std::lock_guard<std::mutex> lock(mutex);

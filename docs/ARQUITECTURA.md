@@ -4,7 +4,7 @@
 Python: practica/interfaz.py (Gradio) o clasificar_textos.py (consola)
     → HTTP/JSON → Ollama → Qwen → respuesta generada
 
-OF: llmPoster + ofxLocalLLM
+OF: llmPoster + ofxLocalAI
     → HTTP/JSON → Ollama → Qwen → respuesta → afiche interactivo
 ```
 
@@ -24,7 +24,7 @@ Esta clase no incluye Model Video Explorer ni una API intermedia propia.
 | `practica/vista.py` y `estilo.css` | Representación programada de la respuesta validada |
 | `practica/ollama_client.py` | Conexión HTTP desde Python |
 | `practica/contrato.py` | Contratos `Afiche`, `Chat` y `Escena` en Python |
-| `ofxLocalLLM` | Conexión HTTP en un hilo; entrega respuestas a OF |
+| `ofxLocalAI` | Conexión HTTP en un hilo; entrega respuestas a OF |
 | `llmPoster/src/ChatSession.h` | Valida el chat y conserva los últimos `memoria` intercambios (4 por defecto) |
 | `llmPoster/bin/data/chat-config.json` | Contexto del chat: `memoria` y `num_ctx`; compartido con Python |
 | `src/TextStyle.h` (llmPoster y llmStage) | Fuente TrueType con ñ y tildes; si falta, vuelve a la bitmap |

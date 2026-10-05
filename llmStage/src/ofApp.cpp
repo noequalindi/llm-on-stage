@@ -5,7 +5,7 @@
 //
 //   texto del alumno ("un escenario lunar...")
 //     -> 2. send()          arma el pedido: system prompt + texto + JSON Schema
-//     -> ofxLocalLLM        POST HTTP a Ollama (http://127.0.0.1:11434/api/chat)
+//     -> ofxLocalAI        POST HTTP a Ollama (http://127.0.0.1:11434/api/chat)
 //                           en otro hilo: la física nunca se congela
 //     -> 3. update()        llm.update() entrega la respuesta al hilo de OF
 //     -> response()/4. apply()  SceneSpec::parse() valida los 9 campos

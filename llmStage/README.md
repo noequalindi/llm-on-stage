@@ -16,7 +16,7 @@ Cada solicitud crea una escena nueva; este ejemplo no conserva historial de chat
 
 1. Ejecutar el [instalador de la clase](../README.md#1-instalar-python-ollama-y-qwen)
    y mantener Ollama activo. Se usa el mismo `qwen2.5:1.5b-instruct` de `llmPoster`.
-2. Copiar la carpeta actualizada **ofxLocalLLM** a **OF/addons/ofxLocalLLM**.
+2. Copiar la carpeta actualizada **ofxLocalAI** a **OF/addons/ofxLocalAI**.
 3. Descargar [ofxBox2d de Vanderlin](https://github.com/vanderlin/ofxBox2d) y colocar
    su contenido en **OF/addons/ofxBox2d**. Deben quedar `src/` y `libs/` dentro.
    También se puede clonar desde la carpeta de OF:
@@ -34,7 +34,7 @@ Cada solicitud crea una escena nueva; este ejemplo no conserva historial de chat
    | --- | --- |
    | Project path | `OF/apps/myApps` |
    | Project name | `llmStage` |
-   | Addons | `ofxLocalLLM`, `ofxBox2d` |
+   | Addons | `ofxLocalAI`, `ofxBox2d` |
    | Additional source paths | vacío |
 
    Pulsar **Update**. No crear una subcarpeta `mySketch`: compilar `llmStage/src`.
@@ -84,7 +84,7 @@ conserva la escena anterior. Ventana fija de 1280 × 800 para esta composición.
 
 ```text
 texto del alumno
-  → ofApp::send() → ofxLocalLLM → HTTP / Ollama
+  → ofApp::send() → ofxLocalAI → HTTP / Ollama
   → ofApp::response() → SceneSpec::parse()
   → StagePhysics::build() → cuerpos y gravedad
   → update() / draw() → física, mouse y respuesta escrita
@@ -100,7 +100,7 @@ Los comentarios numerados en `ofApp.cpp` siguen ese recorrido.
 | [src/StagePhysics.h](src/StagePhysics.h) | Plataformas, cuerpos, fuerzas del mouse y dibujo |
 | [bin/data/system-prompt.txt](bin/data/system-prompt.txt) | Cómo se pide al modelo que interprete una escena |
 | [bin/data/recorded.json](bin/data/recorded.json) | Datos para diseñar sin esperar al modelo |
-| [../ofxLocalLLM/src/ofxTextReveal.h](../ofxLocalLLM/src/ofxTextReveal.h) | Animación de escritura reutilizable |
+| [../ofxLocalAI/src/ofxTextReveal.h](../ofxLocalAI/src/ofxTextReveal.h) | Animación de escritura reutilizable |
 
 ### Contrato: nueve campos
 

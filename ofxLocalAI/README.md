@@ -1,13 +1,28 @@
-# ofxLocalLLM
+# ofxLocalAI
 
 Addon pequeño para **consultar Ollama directamente desde openFrameworks**.
 No ejecuta modelos, no inicia Python y no depende de otros addons. Usa libcurl,
 incluido en el SDK OF utilizado para la prueba.
 
+## Actualizar desde el nombre anterior
+
+El addon antes se llamaba `ofxLocalLLM`. Ahora la carpeta, la clase C++ y el
+archivo principal se llaman **ofxLocalAI**.
+
+1. Copiar `ofxLocalAI/` a `OF/addons/ofxLocalAI/`.
+2. Usar `ofxLocalAI` en `addons.make` y seleccionar ese addon en Project
+   Generator; quitar la selección del nombre anterior.
+3. Incluir `ofxLocalAI.h` y declarar el cliente como `ofxLocalAI`.
+4. Pulsar Update en Project Generator y recompilar.
+
+`llmPoster` y `llmStage` ya usan el nuevo nombre. Los métodos y contratos HTTP
+conservan su comportamiento. Un proyecto antiguo puede seguir necesitando la
+carpeta anterior hasta que se migren sus fuentes.
+
 ## Uso
 
-- Agregar `ofxLocalLLM` con Project Generator e incluir `ofxLocalLLM.h`.
-- Crear un miembro `ofxLocalLLM llm` en `ofApp`.
+- Agregar `ofxLocalAI` con Project Generator e incluir `ofxLocalAI.h`.
+- Crear un miembro `ofxLocalAI llm` en `ofApp`.
 - En `setup()`: registrar listeners de `llm.response` y `llm.error`; llamar
   `llm.setup("http://127.0.0.1:11434")`.
 - Enviar con `llm.chat(request)` desde un evento de interacción.

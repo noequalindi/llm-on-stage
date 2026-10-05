@@ -1,13 +1,13 @@
 #pragma once
 #include "ofMain.h"
-#include "ofxLocalLLM.h"
+#include "ofxLocalAI.h"
 #include "ofxTextReveal.h"
 #include "StagePhysics.h"
 #include "TextStyle.h"
 
 // Recorrido para clase: setup -> send -> response -> SceneSpec -> StagePhysics.
 // Tres capas separadas a propósito, para poder cambiar una sin tocar las otras:
-//   CONEXIÓN  ofxLocalLLM   habla HTTP con Ollama (la misma que usa llmPoster)
+//   CONEXIÓN  ofxLocalAI   habla HTTP con Ollama (la misma que usa llmPoster)
 //   CONTRATO  SceneSpec     qué datos aceptamos y en qué rangos
 //   OBRA      StagePhysics  física Box2D y dibujo; no sabe que existe un LLM
 class ofApp:public ofBaseApp {
@@ -26,7 +26,7 @@ public:
     bool check=false;
     std::string preview;
 private:
-    ofxLocalLLM llm;        // Conexión reutilizable.
+    ofxLocalAI llm;        // Conexión reutilizable.
     ofxTextReveal typing;   // Presentación progresiva, después de recibir HTTP.
     StagePhysics stage;    // Física y dibujo; no conoce Ollama.
     SceneSpec scene;       // Datos validados que enlazan modelo y escena.

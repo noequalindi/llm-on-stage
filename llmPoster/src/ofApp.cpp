@@ -5,7 +5,7 @@
 //
 //   texto del alumno
 //     -> 2. send()      arma el pedido JSON (system + historial + user)
-//     -> ofxLocalLLM    POST HTTP a Ollama (http://127.0.0.1:11434/api/chat)
+//     -> ofxLocalAI    POST HTTP a Ollama (http://127.0.0.1:11434/api/chat)
 //                       en otro hilo: la ventana nunca se congela
 //     -> 3. update()    llm.update() entrega la respuesta al hilo de OF
 //     -> 4. response()  valida el JSON con el contrato (PosterSpec / ChatSession)
@@ -228,7 +228,7 @@ void ofApp::connect() {
 
 // ----------------------------------------------------------------------------
 // 5. REPRESENTAR: drawPoster() y esta interfaz son decisiones de nuestra obra.
-// Se pueden cambiar sin reescribir el transporte HTTP de ofxLocalLLM.
+// Se pueden cambiar sin reescribir el transporte HTTP de ofxLocalAI.
 // draw() corre 60 veces por segundo, esté o no esperando al modelo.
 // ----------------------------------------------------------------------------
 void ofApp::draw() {

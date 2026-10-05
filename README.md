@@ -12,7 +12,7 @@ Práctica Python (opcional)        ── HTTP/JSON ──→ Ollama / Qwen
 ```
 
 **Lo central de esta clase es openFrameworks.** OF conecta directamente con Ollama
-mediante `ofxLocalLLM`. La práctica en Python (Gradio y consola) es **opcional**: sirve
+mediante `ofxLocalAI`. La práctica en Python (Gradio y consola) es **opcional**: sirve
 para ver lo mismo con otra herramienta, pero no hace falta para usar OF. No se usa
 Docker ni se necesita API key.
 
@@ -24,16 +24,60 @@ Docker ni se necesita API key.
 > | --- | --- |
 > | [llmPoster/README.md](llmPoster/README.md) | Ejemplo OF de chat y afiche: controles, contexto (`chat-config.json`) y código |
 > | [llmStage/README.md](llmStage/README.md) | Ejemplo OF con física Box2D: instalación de `ofxBox2d`, contrato de 9 campos y código |
-> | [ofxLocalLLM/README.md](ofxLocalLLM/README.md) | Addon de conexión HTTP con Ollama, para reutilizar en otro sketch |
+> | [ofxLocalAI/README.md](ofxLocalAI/README.md) | Addon de conexión HTTP con Ollama, para reutilizar en otro sketch |
 > | [practica/README.md](practica/README.md) | *Opcional:* práctica Python con Gradio (AFICHE, CHAT, ESCENARIO) y consola |
 >
 > Para agregar paletas, escenarios o cambiar el contexto: [docs/GUIA_ALUMNOS_ESCENARIOS.md](docs/GUIA_ALUMNOS_ESCENARIOS.md).
+
+## Modelo y requisitos locales
+
+`llmPoster`, `llmStage` y la práctica Python comparten **Qwen2.5 1.5B Instruct**.
+No hay que descargar un modelo distinto para cada ejemplo.
+
+| Recurso | Referencia para preparar la clase |
+| --- | --- |
+| Modelo | `qwen2.5:1.5b-instruct`, cuantizado Q4_K_M en Ollama |
+| Tamaño en disco | **986 MB** (≈0,99 GB); medido localmente el 5 de octubre de 2026 |
+| RAM total | **8 GB** como punto de partida estimado; **16 GB recomendados** para usar también IDE y navegador |
+| Procesador | CPU de 64 bits compatible con Ollama; GPU compatible opcional |
+| Software | openFrameworks 0.12.1 y compilador; Ollama; el script prepara Python 3.11 |
+| Internet | Necesario para instalar y descargar; después las consultas son locales |
+
+La referencia de RAM es una estimación para la clase, no un mínimo oficial ni
+una prueba realizada en equipos de 8 GB. En CPU la generación puede tardar más.
+El tamaño descargado no equivale a la memoria necesaria durante la ejecución:
+se agregan contexto, cálculos intermedios y las demás aplicaciones.
+
+Reservar espacio adicional para Ollama, Python, bibliotecas, cachés, OF y el
+compilador. Como margen de preparación del kit, prever **15 GB libres**, más el
+espacio de OF y sus herramientas; no es una medición del tamaño de descarga.
+Los 986 MB corresponden solo al modelo. La etiqueta puede actualizarse:
+[ficha de Qwen2.5 en Ollama](https://ollama.com/library/qwen2.5:1.5b-instruct).
+
+Para comprobar lo instalado y lo cargado en memoria:
+
+```sh
+ollama list
+ollama ps
+```
+
+### Addon incluido y cambio de nombre
+
+El repositorio incluye **`ofxLocalAI/` completo**. El alumno copia esa carpeta a
+`OF/addons/`; no necesita buscar el addon en otro repositorio. Después importa
+el ejemplo con Project Generator y compila. Los modelos se preparan con el
+instalador de la clase.
+
+Si tenías la versión `ofxLocalLLM`, seleccionar `ofxLocalAI` en Project Generator
+y actualizar el proyecto antes de recompilar. Los ejemplos y README ya usan el
+nuevo nombre. [Detalle de la migración](ofxLocalAI/README.md#actualizar-desde-el-nombre-anterior).
+Las presentaciones exportadas anteriormente pueden mostrar el nombre anterior.
 
 ### Guía de pasos a seguir
 
 1. **Instalar openFrameworks** 0.12.1 y su compilador.
 2. **Instalar Ollama y Qwen** con el instalador de esta carpeta.
-3. **Copiar las carpetas** `ofxLocalLLM/` y `llmPoster/` dentro de OF, importarlas
+3. **Copiar las carpetas** `ofxLocalAI/` y `llmPoster/` dentro de OF, importarlas
    con el Project Generator y compilar.
 4. **Usar el ejemplo**: abrir `llmPoster` con Ollama activo.
 5. Opcional: `llmStage` (Box2D) y la práctica en Python.
@@ -117,13 +161,13 @@ de esta clase **dentro de la carpeta de OF**. Copiar las carpetas **completas**
 (`src/`, `bin/data/` y `addons.make`): `bin/data` tiene los prompts, la
 configuración y la fuente con tildes.
 
-1. Copiar **ofxLocalLLM/** a **OF/addons/ofxLocalLLM/** (el addon de conexión).
+1. Copiar **ofxLocalAI/** a **OF/addons/ofxLocalAI/** (el addon de conexión).
 2. Copiar **llmPoster/** a **OF/apps/myApps/llmPoster/** (el ejemplo).
 3. En Project Generator pulsar **import** y seleccionar `OF/apps/myApps/llmPoster`.
    Verificar **Project path = `OF/apps/myApps`** y **Project name = `llmPoster`**.
    El programa concatena ruta + nombre: poner `llmPoster` en la ruta y dejar
    `mySketch` como nombre crea otra carpeta con codigo vacio.
-   Seleccionar **solo `ofxLocalLLM`**, dejar Additional source paths vacio y pulsar
+   Seleccionar **solo `ofxLocalAI`**, dejar Additional source paths vacio y pulsar
    **Update**. El codigo a compilar es el de `llmPoster/src`.
 4. Compilar: en Windows, abrir el proyecto generado con Visual Studio; en macOS con
    Xcode o con Make; en Linux con Make:
@@ -163,7 +207,7 @@ usar `ollama serve` si no está activo. El instalador también puede repetirse.
 [**llmStage: instalación y recorrido del código**](llmStage/README.md) convierte una
 idea en un escenario físico de palabras. El LLM elige gravedad, rebote, forma y
 colores; el alumno interactúa atrayendo o repeliendo los cuerpos con el mouse.
-Usa `ofxLocalLLM` **y `ofxBox2d`**, con el mismo Ollama/modelo ya preparado.
+Usa `ofxLocalAI` **y `ofxBox2d`**, con el mismo Ollama/modelo ya preparado.
 Es un proyecto separado de `llmPoster`, con comentarios para reutilizar la conexión
 y cambiar la representación. No se necesita descargar otro modelo.
 
@@ -256,7 +300,7 @@ Ver la [práctica y su código](practica/README.md).
 | --- | --- |
 | [llmPoster/](llmPoster/README.md) | Interfaz y dibujo en OF; prompt y configuración |
 | [llmStage/](llmStage/README.md) | Escenografía de palabras, física Box2D e interacción con mouse |
-| [ofxLocalLLM/](ofxLocalLLM/README.md) | Conexión HTTP directa con Ollama, reutilizable desde otro sketch |
+| [ofxLocalAI/](ofxLocalAI/README.md) | Conexión HTTP directa con Ollama, reutilizable desde otro sketch |
 | [practica/](practica/README.md) | *Opcional:* interfaz Gradio, cliente de consola, contrato y representación |
 | `setup_local.py`, `install_env_*`, `scripts/` | Preparación de herramientas, dependencias y modelo |
 | `requirements.txt` | Pydantic y Gradio para la práctica Python (opcional) |
@@ -285,7 +329,7 @@ la configuración; no todos los modelos responden igual al prompt.
 | Modelo no encontrado | Repetir el instalador o ejecutar `ollama pull qwen2.5:1.5b-instruct` |
 | JSON rechazado | E copia el detalle; el afiche anterior se conserva |
 | SIN INFERENCIA | Es la respuesta de prueba; enviar un texto para generar otra |
-| Al actualizar sigue pidiendo una carpeta Python | Se está ejecutando el ejemplo anterior; actualizar fuentes, `addons.make`, datos y regenerar con `ofxLocalLLM` |
+| Al actualizar sigue pidiendo una carpeta Python | Se está ejecutando el ejemplo anterior; actualizar fuentes, `addons.make`, datos y regenerar con `ofxLocalAI` |
 
 Para repetir solo la comprobación de memoria CPU/GPU:
 

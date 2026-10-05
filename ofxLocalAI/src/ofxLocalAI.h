@@ -8,10 +8,10 @@
 // en cada frame. Escuchar response/error para recibir el resultado.
 // Todos los métodos públicos se llaman desde el hilo principal de OF.
 // Solo HTTP corre en un worker. false significa ocupado/no iniciado; no encola.
-class ofxLocalLLM {
+class ofxLocalAI {
 public:
-    ofxLocalLLM();
-    ~ofxLocalLLM();
+    ofxLocalAI();
+    ~ofxLocalAI();
     void setup(const std::string& url = "http://127.0.0.1:11434");
     bool chat(const ofJson& request);
     bool listModels();

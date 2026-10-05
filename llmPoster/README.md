@@ -1,7 +1,7 @@
 # llmPoster · LLM generativo + afiche interactivo
 
 Seguir la [instalación de la raíz](../README.md). OF consulta a Ollama con
-**ofxLocalLLM**, sin servidor Python intermedio.
+**ofxLocalAI**, sin servidor Python intermedio.
 
 | Respuesta del chat | Botón JSON |
 | --- | --- |
@@ -63,12 +63,12 @@ OF, elegidas por el LLM; no es generacion de imagen/video ni de codigo C++.
 
 ### Actualizar una copia existente
 
-Actualizar también `OF/addons/ofxLocalLLM/`, incluido el nuevo `src/ofxTextReveal.h`.
+Actualizar también `OF/addons/ofxLocalAI/`, incluido el nuevo `src/ofxTextReveal.h`.
 Copiar **todos** los archivos de `src/` (incluido `ChatSession.h`) y de `bin/data/`
 (incluido `chat-prompt.txt`) al proyecto que se compila. `src/TextStyle.h` y
 `bin/data/LiberationMono-Regular.ttf` permiten dibujar ñ, tildes y ¿¡: la fuente
 bitmap de OF solo tiene ASCII. Si falta el `.ttf`, vuelve a la fuente bitmap. Importar ese proyecto en
-Project Generator, seleccionar `ofxLocalLLM`, pulsar Update y recompilar. No hace
+Project Generator, seleccionar `ofxLocalAI`, pulsar Update y recompilar. No hace
 falta reinstalar Python ni descargar otro modelo. La practica Python conserva su
 contrato original de afiche y no usa el prompt de chat.
 
@@ -113,7 +113,7 @@ Cambiar colores y movimiento en `PosterView.h`; luego cambiar el contrato y
 el prompt para representar otras ideas. El LLM genera texto estructurado; las
 imágenes del afiche se dibujan en C++, sin un modelo de difusión.
 
-Para otro sketch, reutilizar [el addon](../ofxLocalLLM/README.md), registrar los
+Para otro sketch, reutilizar [el addon](../ofxLocalAI/README.md), registrar los
 listeners y llamar `update()`. La interfaz y su comportamiento pertenecen al
 sketch, no aparecen automáticamente por agregar el addon.
 
@@ -125,4 +125,4 @@ para volver a leer prompt/configuración. Una respuesta inválida conserva el
 
 [llmStage](../llmStage/README.md) reutiliza la misma conexión y la escritura progresiva,
 pero convierte la respuesta en cuerpos Box2D que se atraen o repelen con el mouse.
-Es independiente: `llmPoster` sigue necesitando solamente `ofxLocalLLM`.
+Es independiente: `llmPoster` sigue necesitando solamente `ofxLocalAI`.

@@ -1,2 +1,2 @@
-ofxLocalLLM
+ofxLocalAI
 ofxBox2d

@@ -1,5 +1,9 @@
 # Validación · conexión directa a Ollama
 
+El nombre actual del addon es **ofxLocalAI**. Los registros históricos de esta
+página conservan `ofxLocalLLM`, el nombre utilizado al hacer esas verificaciones.
+Los comandos reproducibles usan la ruta actual.
+
 ## Versión de esta entrega
 
 La clase contiene el cliente Python, `ofxLocalLLM` y `llmPoster`. Ambos clientes
@@ -152,7 +156,7 @@ Las copias temporales de QA no forman parte de la entrega.
 Para repetir desde la raíz de la clase (reemplazar RUTA_A_OF):
 
 ```sh
-clang++ -std=c++17 -I ofxLocalLLM/src tests/text_reveal.cpp -o /tmp/test-text-reveal
+clang++ -std=c++17 -I ofxLocalAI/src tests/text_reveal.cpp -o /tmp/test-text-reveal
 /tmp/test-text-reveal
 clang++ -std=c++17 -I llmStage/src -I RUTA_A_OF/libs/json/include tests/scene_spec.cpp -o /tmp/test-scene-spec
 /tmp/test-scene-spec

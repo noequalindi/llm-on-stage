@@ -1,1 +1,1 @@
-ofxLocalLLM
+ofxLocalAI

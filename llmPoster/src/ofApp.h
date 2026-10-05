@@ -1,6 +1,6 @@
 #pragma once
 #include "ofMain.h"
-#include "ofxLocalLLM.h"
+#include "ofxLocalAI.h"
 #include "PosterView.h"
 #include "ChatSession.h"
 #include "ofxTextReveal.h"
@@ -8,7 +8,7 @@
 
 // Recorrido para clase: setup -> send -> update -> response -> draw (ver ofApp.cpp).
 // Tres capas separadas a propósito, para poder cambiar una sin tocar las otras:
-//   CONEXIÓN  ofxLocalLLM            habla HTTP con Ollama (reutilizable en otra obra)
+//   CONEXIÓN  ofxLocalAI            habla HTTP con Ollama (reutilizable en otra obra)
 //   CONTRATO  PosterSpec/ChatSession qué datos aceptamos y cuáles rechazamos
 //   OBRA      PosterView.h           cómo se ven y se mueven esos datos
 class ofApp:public ofBaseApp {
@@ -30,7 +30,7 @@ public:
     std::string preview;
 private:
     // CONEXIÓN: este cliente se puede reutilizar en otra obra de OF.
-    ofxLocalLLM llm;
+    ofxLocalAI llm;
     // PRESENTACIÓN: cambia la velocidad en response(), sin tocar el modelo.
     ofxTextReveal typing;
     TextStyle text;
