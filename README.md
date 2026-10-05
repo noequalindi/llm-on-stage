@@ -1,8 +1,14 @@
-# 26 · LLM generativo local + openFrameworks
+# LLM generativo local + openFrameworks
+
+### LLM Stage - Example in OF
+https://github.com/user-attachments/assets/52e9fc43-fe2a-4e8e-8aa3-cd1fcac6f82d
+
+### LLM Poster - Example in OF
+https://github.com/user-attachments/assets/e04236bc-dfb5-4709-9fa3-9c57587604e7
 
 [Presentación de la clase (PDF)](LLMs_local_python_openFrameworks.pdf)
 
-Escribimos un texto, **Qwen genera una respuesta** y OF la usa para crear una
+Escribimos un texto, **el modelo Qwen genera una respuesta** y OF la usa para crear una
 experiencia interactiva. El afiche es un punto de partida: los alumnos pueden
 cambiar la interfaz, el contrato y la representación.
 
@@ -347,6 +353,7 @@ renombrar esos directorios y repetir la preparación.
 
 - [Arquitectura](docs/ARQUITECTURA.md): clientes, modelo y responsabilidades.
 - [Validación](docs/VALIDACION.md): comprobaciones y límites.
-
+- [Más info sobre el modelo Qwen](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct)
+  
 Esta clase se centra en LLM generativo e interacción desde OF. Visión y
 combinación multimodal tendrán sus propios ejemplos en las siguientes clases.
